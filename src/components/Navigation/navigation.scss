@@ -1,0 +1,125 @@
+@import "../../styles/colors";
+
+nav {
+  position: relative;
+
+  .content {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .navigation__logo {
+    display: none;
+  }
+
+  .menu-toggle {
+    color: $primary;
+    background-color: none;
+    outline: none;
+  }
+
+  .menu {
+    a {
+      text-decoration: none;
+
+      .home {
+        display: block;
+      }
+
+      .icon {
+        display: none;
+      }
+      
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  nav {
+    .content {
+      justify-content: flex-end;
+    }
+
+    .menu {
+      height: 100vh;
+      -webkit-overflow-scrolling: touch;
+      position: absolute;
+      right: -360px;
+      top: 0;
+      -webkit-transition: right .3s ease-in-out, visibility 0s .3s ease-in-out;
+      transition: right .3s ease-in-out, visibility 0s .3s ease-in-out;
+      visibility: hidden;
+      background-color: $bg-color;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+
+      .menu-toggle {
+        font-size: 1.5em;
+        margin-top: 10px;
+        margin-right: 25px;
+      }
+
+      a {
+        width: 50vw;
+        display: block;
+        color: $primary;
+        text-align: right;
+        padding: 0 30px 0 0;
+        font-size: 1.5em;
+        margin-top: 20px;
+      }
+    }
+
+    &.nav--opened {
+      .menu {
+        right: 0;
+        -webkit-transition: right .3s ease-in-out;
+        transition: right .3s ease-in-out;
+        visibility: visible;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  nav {
+    background: transparent;
+
+    .navigation__logo {
+      height: 50px;
+      display: block;
+    }
+
+    .menu-toggle {
+      display: none;
+    }
+
+    .menu {
+      a {
+        text-decoration: none;
+        line-height: 50px;
+        color: $white;
+        font-weight: 400;
+        text-transform: uppercase;
+        font-size: 1.1em;
+
+        .home {
+          display: none;
+        }
+
+        .icon {
+          display: inline-block;
+        }
+        
+        &:not(:last-child) {
+          margin-right: 40px;
+        }
+
+        &:hover {
+          border-bottom: 1px solid $white;
+        }
+      }
+    }
+  }
+}
